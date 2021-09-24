@@ -1,0 +1,14 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import '/container/Layout/Header/header';
+@import '/components/GlideCarousel/glide';
+@import '/container/Home/search/search';
+@import '/container/Home/Feature/feature';
+@import '/components/Footer/footer';
+@import '/container/Nearby/nearby';
+@import '/components/TourItem/tourItem';
+@import '/container/Home/Location/location';
+@import '/components/ImageCard/imageCard';
+@import '/components/ImageCard/imageCard';

@@ -1,0 +1,157 @@
+$header-height: 56px;
+
+@mixin activeTab {
+  @apply bg-yellow-500 text-white;
+  &::after {
+    content: '';
+    border: 10px solid;
+    border-color: transparent transparent transparent #f59e0b;
+    position: absolute;
+    top: 35%;
+    right: -20px;
+    cursor: pointer;
+  }
+}
+
+@mixin header {
+  height: $header-height;
+  @apply bg-white shadow flex items-center justify-between md:px-2 lg:px-3 2xl:px-4 fixed top-0 left-0 z-50 right-0;
+}
+
+%mega-menu-share {
+  position: absolute;
+  left: 20px;
+  top: calc(($header-height * 2 ));
+  @apply bg-white shadow w-2/3 rounded-sm z-10 flex fixed;
+  li {
+    @apply border-b border-r border-gray-200 p-3 relative;
+    &.active {
+      @include activeTab();
+    }
+    &:hover {
+      @include activeTab();
+      p {
+        @apply text-white;
+      }
+    }
+
+    &:first-child {
+      @apply py-5;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+    .recommend_cities {
+      @apply flex;
+    }
+  }
+  a {
+    @apply font-bold;
+  }
+  p {
+    @apply text-xs text-gray-500 font-semibold mx-2;
+  }
+  .content {
+    @apply grid grid-cols-4 gap-4 m-auto;
+  }
+}
+
+.header {
+  @include header();
+}
+
+.second__nav-header {
+  @include header();
+  @apply hidden xl:flex 2xl:flex mt-14;
+}
+
+.header-left {
+  @apply flex items-center flex-grow;
+
+  .logo {
+    @apply text-yellow-500 font-semibold text-2xl mr-5;
+  }
+
+  input {
+    @apply relative w-full bg-gray-100 rounded-full px-9 border-0 outline-none caret-yellow-500 py-1.5 md:w-6/12 lg:w-6/12 xl:w-6/12 2xl:w-6/12;
+    &:hover {
+      @apply bg-white border border-yellow-500;
+    }
+    &:focus {
+      @apply ring-yellow-500 ring-inset;
+    }
+  }
+  svg {
+    @apply absolute top-5 z-10 left-24 lg:left-28 xl:left-28 2xl:left-28;
+  }
+}
+
+.header-right {
+  @apply hidden lg:flex xl:flex 2xl:flex;
+
+  li {
+    @apply px-3 py-1.5 mx-1;
+    &:hover {
+      @apply bg-gray-100 rounded-full;
+    }
+    &:last-child {
+      @apply bg-yellow-500 rounded-full text-white;
+      &:hover {
+        @apply bg-yellow-600;
+      }
+    }
+  }
+
+  a {
+    @apply font-semibold text-xs;
+  }
+}
+
+.mobile-nav {
+  @apply lg:hidden xl:hidden 2xl:hidden text-lg p-2.5;
+  &:hover {
+    @apply bg-gray-100 rounded-full;
+  }
+}
+
+.second-nav {
+  @apply flex;
+  li {
+    @apply mx-1 py-1.5 px-3 relative;
+
+    &:first-child {
+      &::before {
+        content: '';
+        background: url('/assets/images/placeholder.svg');
+        @apply block w-4 h-4 float-left mr-1 mt-1;
+      }
+    }
+
+    &:hover {
+      @apply bg-gray-100 rounded-full;
+    }
+
+    &:last-child {
+      @apply ml-6 relative;
+      &::before {
+        content: '';
+        @apply w-px h-3 bg-gray-500 block z-10 absolute top-1/3 -left-3;
+      }
+      &::after {
+        content: '';
+        background: url('/assets/images/gift-box.svg');
+        @apply block w-4 h-4 float-left mr-1 mt-1 z-10;
+      }
+    }
+  }
+
+  a {
+    @apply text-sm font-semibold;
+  }
+}
+
+.mega-menu {
+  @extend %mega-menu-share;
+}
+
+
